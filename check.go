@@ -61,8 +61,8 @@ func (c *Check) sendPing(url string) error {
 		// send the request to the server
 		response, err = http.DefaultClient.Do(r)
 		if err != nil {
-			// decrement the number of attempts remaining
-			attempts -= 1
+			// increment the number of attempts
+			attempts += 1
 			continue
 		}
 
