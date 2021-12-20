@@ -30,6 +30,9 @@ jobs:
       - name: install dependencies
         run: go get -v -t -d ./...
 
+      - name: wait one minute to avoid rate limiting
+        run: sleep 1m
+
       - name: run tests
         run: go test -v ./...
         env:
