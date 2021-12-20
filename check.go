@@ -95,6 +95,8 @@ func (c *Check) sendPing(url string) error {
 		case responseRateLimited:
 			return fmt.Errorf("the server indicates the check was pinged too frequently (5+ times in one minute)")
 		}
+
+		return fmt.Errorf("the server returned an unknown response: %v", body)
 	}
 
 	return err
