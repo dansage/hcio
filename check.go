@@ -3,7 +3,9 @@ package hcio
 import (
 	"fmt"
 	"io"
+	"math"
 	"net/http"
+	"time"
 )
 
 const (
@@ -55,7 +57,8 @@ func (c *Check) sendPing(url string) error {
 	for attempts < c.Options.MaxRetries {
 		// check if this is the first attempt
 		if attempts != 0 {
-			// TODO: delay for an exponential amount of time
+			// delay for an exponential amount of time: 1s, 2s, 4s by default
+			time.Sleep(time.Duration(math.Pow(2, float64(attempts-1))) * time.Second)
 		}
 
 		// send the request to the server
