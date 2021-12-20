@@ -12,6 +12,8 @@ jobs:
         platform:
           - ubuntu-latest
 
+      max-parallel: 1
+
     name: run tests
     runs-on: ${{ matrix.platform }}
 
