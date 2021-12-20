@@ -105,13 +105,13 @@ func (c *Check) sendPing(url string) error {
 	return err
 }
 
-// FailCode sends a signal to indicate the check is has finished due to a failure with the specified code
+// FailCode sends a signal to indicate the check has finished due to a failure with the specified code
 func (c *Check) FailCode(code uint8) error {
 	// send a simple ping to the fail URL
 	return c.sendPing(fmt.Sprintf("%s%s/%d", c.Options.BaseUrl, c.ID, code))
 }
 
-// Fail sends a signal to indicate the check is has finished due to a failure
+// Fail sends a signal to indicate the check has finished due to a failure
 func (c *Check) Fail() error {
 	// send a simple ping to the fail URL
 	return c.sendPing(fmt.Sprintf("%s%s/fail", c.Options.BaseUrl, c.ID))
